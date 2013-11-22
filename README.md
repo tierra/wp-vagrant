@@ -70,7 +70,7 @@ With the boxes started, you can reach them at one of these locations:
 * http://wordpress-php52.local/
 * http://wordpress-php53.local/
 
-# MySQL Configuration
+## MySQL Configuration
 
 The MySQL root password is "wordpress", and all boxes
 come with two pre-configured databases:
