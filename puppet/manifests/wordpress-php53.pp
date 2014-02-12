@@ -14,6 +14,8 @@ pear::package { "PHPUnit": }
 
 include apache::mod::suphp
 
+apache::mod { 'rewrite': }
+
 apache::vhost { 'wordpress':
   servername       => $::fqdn,
   port             => '80',
@@ -22,7 +24,9 @@ apache::vhost { 'wordpress':
   docroot_group    => 'vagrant',
   suphp_addhandler => 'application/x-httpd-suphp',
   suphp_engine     => 'on',
-  suphp_configpath => '/etc/php5/cgi'
+  suphp_configpath => '/etc/php5/cgi',
+  custom_fragment  => 'RewriteLogLevel 2
+                       RewriteLog /var/log/apache2/wordpress-php53.rewrite.log'
 }
 
 apache::vhost { 'wordpress-ssl':
@@ -34,7 +38,9 @@ apache::vhost { 'wordpress-ssl':
   ssl              => true,
   suphp_addhandler => 'application/x-httpd-suphp',
   suphp_engine     => 'on',
-  suphp_configpath => '/etc/php5/cgi'
+  suphp_configpath => '/etc/php5/cgi',
+  custom_fragment  => 'RewriteLogLevel 2
+                       RewriteLog /var/log/apache2/wordpress-php53.rewrite-ssl.log'
 }
 
 class { 'mysql::server':
