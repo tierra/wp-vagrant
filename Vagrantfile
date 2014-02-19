@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
 
     node.vm.provision :shell, :path => "puppet/bootstrap.sh"
     node.vm.provision :puppet do |puppet|
+      puppet.facter = { 'fqdn' => node.vm.hostname }
       puppet.manifests_path = "puppet/manifests"
       puppet.manifest_file  = "wordpress-php53.pp"
     end
