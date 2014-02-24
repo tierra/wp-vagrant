@@ -23,7 +23,7 @@ the web server is preconfigured to look for WordPress in a specific location.
 * PHPUnit 3.6.12
 * MySQL 5.1.72
 * Subversion 1.6.12, Git 1.7.2.5
-* Node.js and Grunt
+* Node.js 0.10.22, Grunt
 
 ***wordpress-php53***
 
@@ -31,8 +31,21 @@ the web server is preconfigured to look for WordPress in a specific location.
 * Apache 2.2 (suPHP, port 80 and 443)
 * PHP 5.3.10
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 3.7.28 (or later)
+* PHPUnit 3.7.31 (or later)
 * MySQL 5.5.34
+* Subversion 1.6.17, Git 1.7.9.5
+* Node.js 0.10.26 (or later), Grunt
+
+***wordpress-php54***
+
+* Debian Wheezy (7.3)
+* Apache 2.2 (suPHP, port 80 and 443)
+* PHP 5.4.4
+* PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
+* PHPUnit 3.7.31 (or later)
+* MySQL 5.5.35
+* Subversion 1.6.17, Git 1.7.10.4
+* Node.js 0.10.21, Grunt
 
 ## Getting Started
 
@@ -47,17 +60,19 @@ the web server is preconfigured to look for WordPress in a specific location.
 4. Add the following to your hosts file:
     * `192.168.167.9  wordpress-php52.local`
     * `192.168.167.10 wordpress-php53.local`
+    * `192.168.167.11 wordpress-php54.local`
 5. Start Vagrant: `vagrant up [box]`
-    * Without naming a box, both will be started (this will take a while), but you can
-      also simply start just `wordpress-php52` or `wordpress-php53`.
+    * Without naming a box, all boxes will be started (this will take a long
+      time), but you can also start just `wordpress-php52`, `wordpress-php53`,
+      or `wordpress-php54` individually.
 
 Note that Apache is configured to point to the `wordpress/build` directory,
 so you need to remember to run `grunt` from the WordPress directory after
 checking out the code. Optionally, you could also just install WordPress
 normally inside the `wordpress/build` directory without using the develop
-repository. The `wordpress-php52` box is pre-configured with Node.js and
-Grunt, so if you don't have these tools installed, you can just SSH into
-the `wordpress-php52` box, and run the following:
+repository. All boxes are pre-configured with Node.js and Grunt, so if you
+don't have these tools installed locally, you can just SSH into the box, and
+run the following:
 
 ```
 cd /vagrant/wordpress
@@ -69,6 +84,7 @@ With the boxes started, you can reach them at one of these locations:
 
 * http://wordpress-php52.local/
 * http://wordpress-php53.local/
+* http://wordpress-php54.local/
 
 ## MySQL Configuration
 

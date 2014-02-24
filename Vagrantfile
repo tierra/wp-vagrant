@@ -42,4 +42,26 @@ Vagrant.configure("2") do |config|
     end
   end
 
+  config.vm.define 'wordpress-php54', primary: true do |node|
+    node.vm.box = 'wordpress-php54'
+    node.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-puppet.box'
+    node.vm.hostname = node.vm.box + '.' + domain
+    node.vm.network :private_network, ip: '192.168.167.11'
+
+    node.vm.provider :virtualbox do |vb|
+      vb.customize [
+        'modifyvm', :id,
+        '--name', node.vm.box,
+        '--memory', '512',
+      ]
+    end
+
+    node.vm.provision :shell, :path => "puppet/bootstrap.sh"
+    node.vm.provision :puppet do |puppet|
+      puppet.facter = { 'fqdn' => node.vm.hostname }
+      puppet.manifests_path = "puppet/manifests"
+      puppet.manifest_file  = "wordpress-php54.pp"
+    end
+  end
+
 end

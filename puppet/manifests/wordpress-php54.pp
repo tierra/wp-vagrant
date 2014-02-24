@@ -3,26 +3,43 @@ class { 'apache': }
 
 include apt
 
-apt::ppa { 'ppa:chris-lea/node.js': }
+apt::source { 'wheezy_backports':
+  location    => 'http://ftp.debian.org/debian',
+  release     => 'wheezy-backports',
+  repos       => 'main',
+  include_src => false,
+}
 
 package { [
   'subversion',
   'git',
-  'nodejs',
   'php5-curl',
   'php5-gd',
   'php5-imagick',
   'php5-mcrypt',
   'php5-xdebug'
-]:
-  ensure => latest,
-  require => Apt::Ppa['ppa:chris-lea/node.js']
-}
+]: ensure => latest }
 
+apt::force { 'nodejs-legacy':
+  release => 'wheezy-backports',
+  require => Class['apt']
+}
+exec { 'download-npm':
+  command => '/usr/bin/curl https://www.npmjs.org/install.sh > /tmp/npm_install.sh',
+  creates => '/tmp/npm_install.sh',
+  require => Apt::Force['nodejs-legacy'],
+}
+exec { 'install-npm':
+  command => '/bin/bash /tmp/npm_install.sh',
+  cwd => '/tmp',
+  environment => 'clean=no',
+  creates => '/usr/bin/npm',
+  require => Exec['download-npm']
+}
 exec { 'grunt-cli':
   command => '/usr/bin/npm install -g grunt-cli',
   creates => '/usr/bin/grunt',
-  require => Package['nodejs']
+  require => Exec['install-npm']
 }
 
 include pear
