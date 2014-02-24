@@ -51,12 +51,12 @@ the web server is preconfigured to look for WordPress in a specific location.
 
 1. Install both [VirtualBox](https://www.virtualbox.org/) and
    [Vagrant](http://www.vagrantup.com/).
-2. Download [this repository](https://github.com/tierra/wp-vagrant/archive/master.zip),
-   and extract it to a convenient location for your WordPress development.
-3. Check out (or clone) the WordPress develop repository into the "wordpress" folder
-   below the directory used in step number 2:
+2. Clone this repository to a convenient location for your development:
+    * `git clone https://github.com/tierra/wp-vagrant.git`
+    * `cd wp-vagrant`
+3. Check out (or clone) the develop repo to the `wordpress` folder:
     * `svn checkout https://develop.svn.wordpress.org/trunk wordpress` or
-    * `git clone https://github.com/tierra/wordpress.git`
+    * `git clone git://develop.git.wordpress.org/ wordpress`
 4. Add the following to your hosts file:
     * `192.168.167.9  wordpress-php52.local`
     * `192.168.167.10 wordpress-php53.local`
