@@ -1,35 +1,29 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-domain = 'local'
-
 Vagrant.configure("2") do |config|
 
   config.vm.define 'wordpress-php52' do |node|
-    node.vm.box = 'wordpress-php52'
-    node.vm.box_url = 'http://wp.ibaku.net/wordpress-php52.box'
-    node.vm.hostname = node.vm.box + '.' + domain
+    node.vm.box = 'tierra/wordpress-php52'
+    node.vm.hostname = 'wordpress-php52.local'
     node.vm.network :private_network, ip: '192.168.167.9'
 
     node.vm.provider :virtualbox do |vb|
       vb.customize [
         'modifyvm', :id,
-        '--name', node.vm.box,
         '--memory', '512',
       ]
     end
   end
 
   config.vm.define 'wordpress-php53', primary: true do |node|
-    node.vm.box = 'wordpress-php53'
-    node.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/ubuntu-server-12042-x64-vbox4210.box'
-    node.vm.hostname = node.vm.box + '.' + domain
+    node.vm.box = 'puppetlabs/ubuntu-12.04-64-puppet'
+    node.vm.hostname = 'wordpress-php53.local'
     node.vm.network :private_network, ip: '192.168.167.10'
 
     node.vm.provider :virtualbox do |vb|
       vb.customize [
         'modifyvm', :id,
-        '--name', node.vm.box,
         '--memory', '512',
       ]
     end
@@ -43,15 +37,13 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define 'wordpress-php54', primary: true do |node|
-    node.vm.box = 'wordpress-php54'
-    node.vm.box_url = 'http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-puppet.box'
-    node.vm.hostname = node.vm.box + '.' + domain
+    node.vm.box = 'puppetlabs/debian-7.4-64-puppet'
+    node.vm.hostname = 'wordpress-php54.local'
     node.vm.network :private_network, ip: '192.168.167.11'
 
     node.vm.provider :virtualbox do |vb|
       vb.customize [
         'modifyvm', :id,
-        '--name', node.vm.box,
         '--memory', '512',
       ]
     end
