@@ -62,9 +62,9 @@ the web server is preconfigured to look for WordPress in a specific location.
     * `192.168.167.10 wordpress-php53.local`
     * `192.168.167.11 wordpress-php54.local`
 5. Start Vagrant: `vagrant up [box]`
-    * Without naming a box, all boxes will be started (this will take a long
-      time), but you can also start just `wordpress-php52`, `wordpress-php53`,
-      or `wordpress-php54` individually.
+    * Without naming a box, just the `wordpress-php53` box will be started.
+      Specify `wordpress-php52` or `wordpress-php54` to start up either one
+      instead.
 
 Note that Apache is configured to point to the `wordpress/build` directory,
 so you need to remember to run `grunt` from the WordPress directory after
@@ -75,12 +75,10 @@ don't have these tools installed locally, you can just SSH into the box, and
 run the following:
 
 ```
-cd /vagrant/wordpress
-npm install
-grunt
+cd /vagrant/wordpress && npm install && grunt
 ```
 
-With the boxes started, you can reach them at one of these locations:
+With any of the boxes started, you can reach them at these locations:
 
 * http://wordpress-php52.local/
 * http://wordpress-php53.local/
