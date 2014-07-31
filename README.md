@@ -16,7 +16,7 @@ the web server is preconfigured to look for WordPress in a specific location.
 
 ***wordpress-php52***
 
-* Debian Squeeze (6.0)
+* Debian 6.0 (squeeze)
 * Apache 2.2 (suPHP, port 80 only)
 * PHP 5.2.17 (painstakingly pulled from Dotdeb Lenny repos)
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
@@ -27,7 +27,7 @@ the web server is preconfigured to look for WordPress in a specific location.
 
 ***wordpress-php53***
 
-* Ubuntu Precise (12.04) LTS
+* Ubuntu 12.04 (precise)
 * Apache 2.2 (suPHP, port 80 and 443)
 * PHP 5.3.10
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
@@ -38,7 +38,7 @@ the web server is preconfigured to look for WordPress in a specific location.
 
 ***wordpress-php54***
 
-* Debian Wheezy (7.4)
+* Debian 7.4 (wheezy)
 * Apache 2.2 (suPHP, port 80 and 443)
 * PHP 5.4.4
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
@@ -46,6 +46,17 @@ the web server is preconfigured to look for WordPress in a specific location.
 * MySQL 5.5.38
 * Subversion 1.6.17, Git 1.7.10.4
 * Node.js 0.10.26, Grunt
+
+***wordpress-php55***
+
+* Ubuntu 14.04 (trusty)
+* Apache 2.4 (suPHP, port 80 and 443)
+* PHP 5.5.9
+* PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
+* PHPUnit 4.0.17
+* MySQL 5.5.38
+* Subversion 1.8.8, Git 1.9.1
+* Node.js 0.10.29, Grunt
 
 ## Getting Started
 
@@ -61,10 +72,11 @@ the web server is preconfigured to look for WordPress in a specific location.
     * `192.168.167.9  wordpress-php52.local`
     * `192.168.167.10 wordpress-php53.local`
     * `192.168.167.11 wordpress-php54.local`
+    * `192.168.167.12 wordpress-php55.local`
 5. Start Vagrant: `vagrant up [box]`
     * Without naming a box, just the `wordpress-php53` box will be started.
-      Specify `wordpress-php52` or `wordpress-php54` to start up either one
-      instead.
+      Specify `wordpress-php52`, `wordpress-php54`, or `wordpress-php55` to
+      start up either one instead.
 
 Note that Apache is configured to point to the `wordpress/build` directory,
 so you need to remember to run `grunt` from the WordPress directory after
@@ -83,6 +95,7 @@ With any of the boxes started, you can reach them at these locations:
 * http://wordpress-php52.local/
 * http://wordpress-php53.local/
 * http://wordpress-php54.local/
+* http://wordpress-php55.local/
 
 ## MySQL Configuration
 
