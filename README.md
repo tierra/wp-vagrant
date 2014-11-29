@@ -38,14 +38,14 @@ the web server is preconfigured to look for WordPress in a specific location.
 
 ***wordpress-php54***
 
-* Debian 7.4 (wheezy)
+* Debian 7.6 (wheezy)
 * Apache 2.2 (suPHP, port 80 and 443)
-* PHP 5.4.4
+* PHP 5.4.35
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
 * PHPUnit 4.0.17
-* MySQL 5.5.38
+* MySQL 5.5.40
 * Subversion 1.6.17, Git 1.7.10.4
-* Node.js 0.10.26, Grunt
+* Node.js 0.10.29, Grunt
 
 ***wordpress-php55***
 
@@ -109,4 +109,3 @@ A single account with rights all databases for convenience:
 
 * Username: `wordpress`
 * Password: `wordpress`
-

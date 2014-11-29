@@ -37,7 +37,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define 'wordpress-php54', autostart: false do |node|
-    node.vm.box = 'puppetlabs/debian-7.4-64-puppet'
+    node.vm.box = 'tierra/wordpress-php54'
     node.vm.hostname = 'wordpress-php54.local'
     node.vm.network :private_network, ip: '192.168.167.11'
 
