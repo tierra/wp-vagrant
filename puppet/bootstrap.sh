@@ -17,6 +17,8 @@ if [ ! -d /etc/puppet/modules/mysql ]; then
 	puppet module install puppetlabs/mysql;
 fi
 
-if [ ! -d /etc/puppet/modules/pear ]; then
-	puppet module install rafaelfc/pear;
+if [ ! -f /usr/local/bin/phpunit ]; then
+	curl --silent --show-error --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit-4.4.2.phar
 fi
+
+chmod +x /usr/local/bin/phpunit

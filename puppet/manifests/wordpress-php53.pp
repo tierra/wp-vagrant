@@ -9,6 +9,7 @@ package { [
   'subversion',
   'git',
   'nodejs',
+  'php5-cli',
   'php5-curl',
   'php5-gd',
   'php5-imagick',
@@ -23,12 +24,6 @@ exec { 'grunt-cli':
   command => '/usr/bin/npm install -g grunt-cli',
   creates => '/usr/bin/grunt',
   require => Package['nodejs']
-}
-
-include pear
-pear::package { "PEAR": }
-pear::package { "PHPUnit":
-  repository => 'pear.phpunit.de'
 }
 
 include apache::mod::suphp
