@@ -25,7 +25,7 @@ apt::force { 'nodejs-legacy':
   require => Class['apt']
 }
 exec { 'download-npm':
-  command => '/usr/bin/curl https://www.npmjs.org/install.sh > /tmp/npm_install.sh',
+  command => '/usr/bin/curl --silent --show-error --output /tmp/npm_install.sh --location https://www.npmjs.com/install.sh',
   creates => '/tmp/npm_install.sh',
   require => Apt::Force['nodejs-legacy'],
 }
