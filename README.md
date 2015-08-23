@@ -28,35 +28,35 @@ the web server is preconfigured to look for WordPress in a specific location.
 ***wordpress-php53***
 
 * Ubuntu 12.04 (precise)
-* Apache 2.2 (suPHP, port 80 and 443)
+* Apache 2.2.22 (suPHP, port 80 and 443)
 * PHP 5.3.10
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 4.4.2
-* MySQL 5.5.38
+* PHPUnit 4.8.5
+* MySQL 5.5.44
 * Subversion 1.6.17, Git 1.7.9.5
-* Node.js 0.10.29, Grunt
+* Node.js 0.12.7, Grunt
 
 ***wordpress-php54***
 
-* Debian 7.6 (wheezy)
-* Apache 2.2 (suPHP, port 80 and 443)
-* PHP 5.4.36
+* Debian 7.8 (wheezy)
+* Apache 2.2.22 (suPHP, port 80 and 443)
+* PHP 5.4.41
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 4.4.2
-* MySQL 5.5.40
+* PHPUnit 4.8.5
+* MySQL 5.5.44
 * Subversion 1.6.17, Git 1.7.10.4
-* Node.js 0.10.29, Grunt
+* Node.js 0.12.7, Grunt
 
 ***wordpress-php55***
 
 * Ubuntu 14.04 (trusty)
-* Apache 2.4 (suPHP, port 80 and 443)
+* Apache 2.4.7 (suPHP, port 80 and 443)
 * PHP 5.5.9
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 4.4.2
-* MySQL 5.5.40
+* PHPUnit 4.8.5
+* MySQL 5.5.44
 * Subversion 1.8.8, Git 1.9.1
-* Node.js 0.10.33, Grunt
+* Node.js 0.12.7, Grunt
 
 ## Getting Started
 
@@ -105,7 +105,7 @@ come with two pre-configured databases:
 * `wordpress` (this is meant for a regular installation)
 * `wordpress-tests` (this is meant for use with PHPUnit tests)
 
-A single account with rights all databases for convenience:
+A single account with rights to all databases for convenience:
 
 * Username: `wordpress`
 * Password: `wordpress`
