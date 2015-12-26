@@ -14,6 +14,6 @@ if [ ! -d /etc/puppetlabs/code/modules/mysql ]; then
 fi
 
 if [ ! -f /usr/local/bin/phpunit ]; then
-	curl --silent --show-error --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit-4.8.5.phar
+	curl --silent --show-error --location --output /usr/local/bin/phpunit https://phar.phpunit.de/phpunit-4.8.21.phar
 fi
 chmod +x /usr/local/bin/phpunit
