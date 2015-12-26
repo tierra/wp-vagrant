@@ -1,5 +1,6 @@
 
 class { 'apache': }
+class { 'apache::mod::version': }
 
 package { [
   'build-essential',
@@ -33,7 +34,7 @@ include apache::mod::suphp
 apache::mod { 'rewrite': }
 
 apache::vhost { 'wordpress':
-  servername       => $::fqdn,
+  servername       => $fqdn,
   port             => '80',
   docroot          => '/vagrant/wordpress/build',
   docroot_owner    => 'vagrant',
@@ -42,12 +43,18 @@ apache::vhost { 'wordpress':
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
   override         => 'All',
-  custom_fragment  => 'RewriteLogLevel 2
-                       RewriteLog /var/log/apache2/rewrite.log'
+  custom_fragment  => @(APACHECONF)
+    <IfVersion < 2.4>
+      RewriteLogLevel 2
+      RewriteLog /var/log/apache2/rewrite.log
+    </IfVersion>
+    <IfVersion >= 2.4>
+      LogLevel warn rewrite:trace3
+    </IfVersion>
+    | APACHECONF
 }
-
 apache::vhost { 'wordpress-ssl':
-  servername       => $::fqdn,
+  servername       => $fqdn,
   port             => '443',
   docroot          => '/vagrant/wordpress/build',
   docroot_owner    => 'vagrant',
@@ -57,8 +64,15 @@ apache::vhost { 'wordpress-ssl':
   suphp_engine     => 'on',
   suphp_configpath => '/etc/php5/cgi',
   override         => 'All',
-  custom_fragment  => 'RewriteLogLevel 2
-                       RewriteLog /var/log/apache2/rewrite-ssl.log'
+  custom_fragment  => @(APACHECONF)
+    <IfVersion < 2.4>
+      RewriteLogLevel 2
+      RewriteLog /var/log/apache2/rewrite-ssl.log
+    </IfVersion>
+    <IfVersion >= 2.4>
+      LogLevel warn rewrite:trace3
+    </IfVersion>
+    | APACHECONF
 }
 
 class { 'mysql::server':
