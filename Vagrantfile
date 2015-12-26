@@ -1,14 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-def provision(node)
+def provision(node, environment)
   node.vm.provider :virtualbox do |vb|
     vb.customize ['modifyvm', :id, '--memory', '512']
   end
-  node.vm.provision :shell, :path => 'environments/bootstrap.sh'
+  node.vm.provision :shell, path: 'environments/bootstrap.sh', args: environment
   node.vm.provision :puppet do |puppet|
     puppet.environment_path = 'environments'
-    puppet.environment = 'vagrant'
+    puppet.environment = environment
     puppet.facter = { 'fqdn' => node.vm.hostname }
   end
 end
@@ -28,21 +28,28 @@ Vagrant.configure('2') do |config|
     node.vm.box = 'puppetlabs/ubuntu-12.04-64-puppet'
     node.vm.hostname = 'wordpress-php53.local'
     node.vm.network :private_network, ip: '192.168.167.10'
-    provision(node)
+    provision(node, 'suphp')
   end
 
   config.vm.define 'wordpress-php54', autostart: false do |node|
     node.vm.box = 'puppetlabs/debian-7.8-64-puppet'
     node.vm.hostname = 'wordpress-php54.local'
     node.vm.network :private_network, ip: '192.168.167.11'
-    provision(node)
+    provision(node, 'suphp')
   end
 
   config.vm.define 'wordpress-php55', autostart: false do |node|
     node.vm.box = 'puppetlabs/ubuntu-14.04-64-puppet'
     node.vm.hostname = 'wordpress-php55.local'
     node.vm.network :private_network, ip: '192.168.167.12'
-    provision(node)
+    provision(node, 'suphp')
+  end
+
+  config.vm.define 'wordpress-php56', autostart: false do |node|
+    node.vm.box = 'puppetlabs/debian-8.2-64-puppet'
+    node.vm.hostname = 'wordpress-php56.local'
+    node.vm.network :private_network, ip: '192.168.167.13'
+    provision(node, 'fpm')
   end
 
 end

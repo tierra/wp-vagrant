@@ -58,6 +58,17 @@ the web server is preconfigured to look for WordPress in a specific location.
 * Subversion 1.8.8, Git 1.9.1
 * Node.js 0.12.9, Grunt
 
+***wordpress-php56*** (EXPERIMENTAL)
+
+* Debian 8.2 (jessie)
+* Apache 2.4.10 (FPM, port 80 and 443)
+* PHP 5.6.14
+* PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
+* PHPUnit 4.8.21
+* MySQL 5.5.46
+* Subversion 1.8.10, Git 2.1.4
+* Node.js 0.12.9, Grunt
+
 ## Getting Started
 
 1. Install both [VirtualBox](https://www.virtualbox.org/) and
@@ -73,10 +84,11 @@ the web server is preconfigured to look for WordPress in a specific location.
     * `192.168.167.10 wordpress-php53.local`
     * `192.168.167.11 wordpress-php54.local`
     * `192.168.167.12 wordpress-php55.local`
+    * `192.168.167.13 wordpress-php56.local`
 5. Start Vagrant: `vagrant up [box]`
     * Without naming a box, just the `wordpress-php53` box will be started.
-      Specify `wordpress-php52`, `wordpress-php54`, or `wordpress-php55` to
-      start up either one instead.
+      Specify `wordpress-php54`, `wordpress-php55`, or `wordpress-php56` to
+      start up that one instead.
 
 Note that Apache is configured to point to the `wordpress/build` directory,
 so you need to remember to run `grunt` from the WordPress directory after
@@ -96,6 +108,7 @@ With any of the boxes started, you can reach them at these locations:
 * http://wordpress-php53.local/
 * http://wordpress-php54.local/
 * http://wordpress-php55.local/
+* http://wordpress-php56.local/
 
 ## MySQL Configuration
 

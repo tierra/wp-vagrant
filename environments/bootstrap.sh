@@ -2,11 +2,22 @@
 
 apt-get update
 
-mkdir -p /etc/suphp
-cp /vagrant/environments/files/suphp.conf /etc/suphp/suphp.conf
-
 if [ ! -d /etc/puppetlabs/code/modules/apache ]; then
 	puppet module install --modulepath /etc/puppetlabs/code/modules puppetlabs/apache;
+fi
+
+if [ "$1" == "suphp" ]; then
+	mkdir -p /etc/suphp
+	cp /vagrant/environments/files/suphp.conf /etc/suphp/suphp.conf
+fi
+
+if [ "$1" == "fpm" ]; then
+	if [ ! -d /etc/puppetlabs/code/modules/apt ]; then
+		puppet module install --modulepath /etc/puppetlabs/code/modules puppetlabs/apt;
+	fi
+	if [ ! -d /etc/puppetlabs/code/modules/php ]; then
+		puppet module install --modulepath /etc/puppetlabs/code/modules nodes/php;
+	fi
 fi
 
 if [ ! -d /etc/puppetlabs/code/modules/mysql ]; then
