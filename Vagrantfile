@@ -26,6 +26,7 @@ Vagrant.configure('2') do |config|
 
   config.vm.define 'wordpress-php53', primary: true do |node|
     node.vm.box = 'puppetlabs/ubuntu-12.04-64-puppet'
+    node.vm.box_version = '= 1.0.2'
     node.vm.hostname = 'wordpress-php53.local'
     node.vm.network :private_network, ip: '192.168.167.10'
     provision(node)

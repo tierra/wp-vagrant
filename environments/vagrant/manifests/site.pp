@@ -15,20 +15,6 @@ package { [
   'subversion'
 ]: ensure => latest }
 
-exec { 'nodesource':
-  command => '/usr/bin/curl --silent --location https://deb.nodesource.com/setup_0.12 | bash -',
-  require => Package['curl']
-}
-package { 'nodejs':
-  ensure => latest,
-  require => Exec['nodesource']
-}
-exec { 'grunt-cli':
-  command => '/usr/bin/npm install -g grunt-cli',
-  creates => '/usr/bin/grunt',
-  require => Package['nodejs']
-}
-
 include apache::mod::suphp
 
 apache::mod { 'rewrite': }
