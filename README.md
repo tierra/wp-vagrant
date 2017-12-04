@@ -14,17 +14,6 @@ the web server is preconfigured to look for WordPress in a specific location.
 
 ## Configurations Provided
 
-***wordpress-php52***
-
-* Debian 6.0 (squeeze)
-* Apache 2.2 (suPHP, port 80 only)
-* PHP 5.2.17 (painstakingly pulled from Dotdeb Lenny repos)
-* PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 3.6.12
-* MySQL 5.1.73
-* Subversion 1.6.12, Git 1.7.2.5
-* Node.js 0.10.29, Grunt
-
 ***wordpress-php53***
 
 * Ubuntu 12.04 (precise)
@@ -69,14 +58,12 @@ the web server is preconfigured to look for WordPress in a specific location.
     * `svn checkout https://develop.svn.wordpress.org/trunk wordpress` or
     * `git clone git://develop.git.wordpress.org/ wordpress`
 4. Add the following to your hosts file:
-    * `192.168.167.9  wordpress-php52.local`
     * `192.168.167.10 wordpress-php53.local`
     * `192.168.167.11 wordpress-php54.local`
     * `192.168.167.12 wordpress-php55.local`
 5. Start Vagrant: `vagrant up [box]`
-    * Without naming a box, just the `wordpress-php53` box will be started.
-      Specify `wordpress-php52`, `wordpress-php54`, or `wordpress-php55` to
-      start up either one instead.
+    * Without naming a box, just the `wordpress-php55` box will be started.
+      Specify `wordpress-php53`, or `wordpress-php54`, to start up instead.
 
 Note that Apache is configured to point to the `wordpress/build` directory,
 so you need to remember to run `grunt` from the WordPress directory after
@@ -92,7 +79,6 @@ cd /vagrant/wordpress && npm install && grunt
 
 With any of the boxes started, you can reach them at these locations:
 
-* http://wordpress-php52.local/
 * http://wordpress-php53.local/
 * http://wordpress-php54.local/
 * http://wordpress-php55.local/
