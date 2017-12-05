@@ -1,6 +1,9 @@
 
 class { 'apache': }
-class { 'apache::mod::version': }
+
+if $::lsbdistcodename == 'precise' {
+  class { 'apache::mod::version': }
+}
 
 package { [
   'build-essential',

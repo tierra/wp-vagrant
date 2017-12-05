@@ -20,10 +20,10 @@ the web server is preconfigured to look for WordPress in a specific location.
 * Apache 2.2.22 (suPHP, port 80 and 443)
 * PHP 5.3.10
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 4.8.27
+* PHPUnit 4.8.36
 * MySQL 5.5.50
 * Subversion 1.6.17, Git 1.7.9.5
-* Node.js 6.4.0, Grunt
+* Node.js 6.12.0, Grunt
 
 ***wordpress-php54***
 
@@ -31,10 +31,10 @@ the web server is preconfigured to look for WordPress in a specific location.
 * Apache 2.2.22 (suPHP, port 80 and 443)
 * PHP 5.4.45
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 4.8.27
+* PHPUnit 4.8.36
 * MySQL 5.5.50
 * Subversion 1.6.17, Git 1.7.10.4
-* Node.js 6.4.0, Grunt
+* Node.js 6.12.0, Grunt
 
 ***wordpress-php55***
 
@@ -42,10 +42,10 @@ the web server is preconfigured to look for WordPress in a specific location.
 * Apache 2.4.7 (suPHP, port 80 and 443)
 * PHP 5.5.9
 * PHP Extensions: curl, gd, imagick, mcrypt, mysql, xdebug
-* PHPUnit 4.8.27
+* PHPUnit 4.8.36
 * MySQL 5.5.50
 * Subversion 1.8.8, Git 1.9.1
-* Node.js 6.5.0, Grunt
+* Node.js 6.12.0, Grunt
 
 ## Getting Started
 
